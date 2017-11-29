@@ -3,12 +3,10 @@ module tb_RAM ();
 reg clk,ena,ctl;
 reg [7:0] adr;
 wire [7:0] dat_tb;
-
+reg ope_tb;
 
 reg [7:0] wdat;
-
-
-assign dat_tb = (ctl==0)? wdat : 8'hZZ;
+assign dat_tb = wdat;
 
 
 initial begin 
@@ -17,38 +15,34 @@ initial begin
 end
 
 initial begin
-  ena = 0;
-  #3 ena = 0;
-  #1 ena = 1;
+ena=1;
+ctl=1;
+ope_tb=1;
+adr=0;
+wdat=0;
 end
-
 
 
 initial begin
-  ctl=0;
-  #10 adr=8'hFA;
-  #10 wdat=8'hAE;
-  #10 ctl=1;
-  #10 adr=8'hFE;
-  #50 adr=8'hFA;
+#10 ena=0; 
 
+#5 ctl=1;
+adr=8'h35;
+wdat=8'h10;
+#5 ctl=0;
+#5 ctl=1;
 
-/*  ctl=1;
-  #10 adr=119;
-  #10 dat=8'hAF;
-  #20 ctl=0;
-  #10 ctl=1;
-  #10 adr=109;
-  #20 ena=0;
-  #20 adr=119;
-  #10 ctl=1;
-  #10 ena =1;
-*/
+#5 ctl=1;
+ope_tb =0;
+
+#25 adr=8'h50;
+#10 adr=8'h60;
+#10 adr=8'h35;
 
 end
 
 
-RAM DUT(ctl,ena,adr,dat_tb);
+RAM DUT(ope_tb,ctl,ena,adr,dat_tb);
 
 
 initial begin
