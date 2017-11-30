@@ -5,36 +5,16 @@ module bimux_8x1 (
                    inout       out
 );
 
-reg out1;
 reg [7:0] inp1;
-
-always @(sel or dir) begin
-  if (dir==0) begin
-    case (sel)
-      0: out1 = inp[0];
-      1: out1 = inp[1];
-      2: out1 = inp[2];
-      3: out1 = inp[3];
-      4: out1 = inp[4];
-      5: out1 = inp[5];
-      6: out1 = inp[6];
-      7: out1 = inp[7];
-    endcase
-  end
-  else if (dir==1) begin
-    case (sel)
-      0: inp1[0] = out;
-      1: inp1[1] = out;
-      2: inp1[2] = out;
-      3: inp1[3] = out;
-      4: inp1[4] = out;
-      5: inp1[5] = out;
-      6: inp1[6] = out;
-      7: inp1[7] = out;
-    endcase
+always @(sel or posedge dir or out) begin
+  if (dir==1) begin
+    inp1[sel]=out;
   end
 end
-assign out=out1;
-assign inp=inp1;
+
+
+
+assign out = (dir==0)? inp[sel] : 8'bZZZZZZZZ;
+assign inp = (dir==1)? inp1 : 8'bZZZZZZZZ;
 
 endmodule
