@@ -28,7 +28,7 @@ reg       dat_dir;
 reg       ram_ope;
 reg       ram_ctl;
 reg       ram_ena;                     
-reg [1:0] pc_mod;
+//reg [1:0] pc_mod;
 
 
 always @(posedge clk or negedge res) begin
@@ -48,7 +48,7 @@ always @(posedge clk or negedge res) begin
     dat_dir=1;
     adr_reg_sel=0;
     adr_dir=0;
-    pc_mod=0;
+    //pc_mod=0;
   end
   else begin
     if (counter==1) begin
@@ -58,12 +58,59 @@ always @(posedge clk or negedge res) begin
       dat_dir=1;
       ram_ope=0;
       ram_ctl=1;
-      pc_mod=0;
+      //pc_mod=0;
     end
-    //counter=counter+1;
-  end
-end
+    else if (counter==3) begin
+      adr_reg_sel=1;
+      dat_reg_sel=1;
+      adr_dir=0;
+      dat_dir=1;
+      ram_ope=0;
+      ram_ctl=1;
+      //pc_mod=1;
+    end
+    else if (counter==4) begin
+      //pc_mod=0;
+    end
+    else if (counter==5) begin
+      adr_reg_sel=0;
+      dat_reg_sel=0;
+      adr_dir=0;
+      dat_dir=1;
+      ram_ope=0;
+      ram_ctl=1;
+      //pc_mod=0;
+    end
+    else if (counter==7) begin
+      adr_reg_sel=1;
+      dat_reg_sel=2;
+      adr_dir=0;
+      dat_dir=1;
+      ram_ope=0;
+      ram_ctl=1;
+      //pc_mod=1;
+    end
+    else if(counter==9) begin
+      adr_reg_sel=1;
+      dat_reg_sel=4;
+      adr_dir=0;
+      dat_dir=0;
+      ram_ope=1;
+      ram_ctl=0;
+      
+      //if (sub_out[7]==0) begin
+        
 
+
+
+
+    end
+  end
+
+
+
+end
+assign pc_mod = (counter==3)? 1:0;
 
 endmodule
 

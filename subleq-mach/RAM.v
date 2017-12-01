@@ -28,6 +28,8 @@ initial begin
   mem[0]=5;
   mem[1]=6;
   mem[2]=7;
+  mem[5]=3;
+  mem[6]=5;
 end
 
 
