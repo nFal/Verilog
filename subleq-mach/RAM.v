@@ -1,6 +1,6 @@
 module RAM (
              input        ope,  //0 = output enable; 1 = disable
-	     input        ctl,  //0 = write; 1 = read
+	           input        ctl,  //0 = write; 1 = read
              input        ena,  //0 = enable; 1 = disable
              input  [7:0] adr,
              inout  [7:0] dat
