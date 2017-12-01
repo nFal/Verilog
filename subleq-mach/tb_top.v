@@ -73,6 +73,19 @@ initial begin
   #500 $finish;
 end
 
+
+initial begin 
+  clk = 0;
+  #5;
+  forever #5 clk = ~clk;
+end
+
+initial begin
+  res=1;
+  #3 res=0;
+  #3 res=1;
+end
+
 endmodule
 
 

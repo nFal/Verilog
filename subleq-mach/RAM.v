@@ -9,6 +9,9 @@ module RAM (
 
 reg [7:0] mem[0:255];
 
+
+
+
 assign dat = (ope==1'b1 | ctl==1'b0 | ena==1'b1) ? 
              8'bZZZZZZZZ : mem[adr];
 
@@ -19,5 +22,13 @@ always @(ctl,ena) begin
     end
   end
 end
+
+
+initial begin
+  mem[0]=5;
+  mem[1]=6;
+  mem[2]=7;
+end
+
 
 endmodule
