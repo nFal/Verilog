@@ -27,9 +27,14 @@ end
 initial begin
   mem[0]=5;
   mem[1]=6;
-  mem[2]=7;
-  mem[5]=3;
-  mem[6]=5;
+  mem[2]=3;
+  mem[3]=8;
+  mem[4]=9;
+  mem[5]=5;
+  mem[6]=3;
+  mem[8]=5;
+  mem[9]=6;
+
 end
 
 
