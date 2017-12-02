@@ -25,15 +25,19 @@ end
 
 
 initial begin
-  mem[0]=5;
-  mem[1]=6;
+  mem[0]=10;
+  mem[1]=12;
   mem[2]=3;
-  mem[3]=8;
-  mem[4]=9;
-  mem[5]=5;
-  mem[6]=3;
-  mem[8]=5;
-  mem[9]=6;
+  mem[3]=12;
+  mem[4]=11;
+  mem[5]=6;
+  mem[6]=12;
+  mem[8]=12;
+  mem[9]=25;
+
+  mem[10]=3;
+  mem[11]=2;
+  mem[12]=0;
 
 end
 
