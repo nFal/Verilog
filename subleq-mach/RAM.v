@@ -32,8 +32,8 @@ initial begin
   mem[4]=11;
   mem[5]=6;
   mem[6]=12;
-  mem[8]=12;
-  mem[9]=25;
+  mem[7]=12;
+  mem[8]=25;
 
   mem[10]=3;
   mem[11]=2;
