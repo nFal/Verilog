@@ -35,7 +35,7 @@ reg       branch;
 always @(posedge clk or negedge res) begin
   if (res==0)
     counter=0;
-  else if (counter==10)
+  else if (counter==11)
     counter<=0;
   else
     counter<= counter+1;
@@ -100,7 +100,7 @@ always @(posedge clk or negedge res) begin
       adr_dir=0;
       dat_dir=0;
       ram_ope=1;
-      ram_ctl=0;
+      //ram_ctl=0;
       //if (sub_out[7]==0) begin
     end
     else if(counter==9) begin
@@ -108,6 +108,14 @@ always @(posedge clk or negedge res) begin
         branch=1;
       else
         branch=0;
+      ram_ope=1;
+      ram_ctl=0;
+    end
+    else if(counter==10) begin
+      //if (sub_out[7]==1 | sub_out==8'h00)
+      //  branch=1;
+      //else
+      //  branch=0;
       ram_ctl=1;
       adr_reg_sel=0;
       adr_dir=0;
@@ -122,7 +130,7 @@ always @(posedge clk or negedge res) begin
 
 end
 
-assign pc_mod = (counter==10) ? ( (branch==1) ? 2 : 1 ) : ( (counter==3 | counter==8)? 1:0 );
+assign pc_mod = (counter==11) ? ( (branch==1) ? 2 : 1 ) : ( (counter==3 | counter==8)? 1:0 );
 //assign ram_ctl=(counter==9)? 0:1;
 endmodule
 
