@@ -1,4 +1,4 @@
-A project aiming to simulate a basic one instruction set machine, able to execute only the 'subleq' instruction.
+A project aiming to simulate a basic one instruction set machine, that can be built using commercially available TTL chips, able to execute only the 'subleq' instruction.
 
 Compile and simulate with icarus verilog. View waveform with gtkwave.
 
